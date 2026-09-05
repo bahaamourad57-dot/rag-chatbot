@@ -1,0 +1,62 @@
+[
+  {
+    "doc_id": "cross_validation::0",
+    "source": "cross_validation.md",
+    "chunk_id": 0,
+    "text": "# Cross-Validation\n\nCross-validation is a technique for estimating how well a model will\ngeneralize to unseen data, without needing a separate holdout set for\nevery experiment.\n\nThe most common form is k-fold cross-validation:\n1. Split the training data into k equal-sized folds (commonly k=5 or k=10)\n2. For each fold, train the model on the other k-1 folds and evaluate\n   on the held-out fold\n3. Average the k evaluation scores to get a single performance estimate"
+  },
+  {
+    "doc_id": "cross_validation::1",
+    "source": "cross_validation.md",
+    "chunk_id": 1,
+    "text": "uate\n   on the held-out fold\n3. Average the k evaluation scores to get a single performance estimate\nStratified k-fold cross-validation preserves the class distribution in\neach fold, which matters for classification tasks with imbalanced\nclasses \u2014 without stratification, a fold might end up with very few\nexamples of the minority class."
+  },
+  {
+    "doc_id": "cross_validation::2",
+    "source": "cross_validation.md",
+    "chunk_id": 2,
+    "text": "\nclasses \u2014 without stratification, a fold might end up with very few\nexamples of the minority class.\nWhy use cross-validation instead of a single train/test split:\n- A single split gives one noisy estimate; averaging over k folds\n  gives a more reliable estimate and also an estimate of variance\n  (the standard deviation across folds)\n- It makes better use of limited data, since every example is used for\n  both training and validation at some point"
+  },
+  {
+    "doc_id": "cross_validation::3",
+    "source": "cross_validation.md",
+    "chunk_id": 3,
+    "text": "er use of limited data, since every example is used for\n  both training and validation at some point\nCross-validation is typically used during model selection and\nhyperparameter tuning. The final model is usually retrained on the\nfull training set once the best configuration is chosen, and a\nseparate untouched test set is reserved for final evaluation."
+  },
+  {
+    "doc_id": "overfitting::0",
+    "source": "overfitting.md",
+    "chunk_id": 0,
+    "text": "# Overfitting and Underfitting\n\nOverfitting happens when a model learns the training data too well,\nincluding its noise and random fluctuations, so it performs great on\ntraining data but poorly on new, unseen data. A classic sign of\noverfitting is a large gap between training accuracy and validation\naccuracy \u2014 for example, 99% training accuracy but 70% validation\naccuracy."
+  },
+  {
+    "doc_id": "overfitting::1",
+    "source": "overfitting.md",
+    "chunk_id": 1,
+    "text": "g accuracy and validation\naccuracy \u2014 for example, 99% training accuracy but 70% validation\naccuracy.\nUnderfitting is the opposite problem: the model is too simple to\ncapture the underlying pattern in the data, so it performs poorly on\nboth training and validation data.\n\nCommon ways to reduce overfitting:\n- Get more training data\n- Use regularization (L1/L2 penalties, dropout in neural networks)\n- Reduce model complexity (fewer features, shallower trees, fewer layers)\n- Use cross-validation to tune hyperparameters instead of the test set\n- Use early stopping during training"
+  },
+  {
+    "doc_id": "overfitting::2",
+    "source": "overfitting.md",
+    "chunk_id": 2,
+    "text": "ross-validation to tune hyperparameters instead of the test set\n- Use early stopping during training\nCommon ways to reduce underfitting:\n- Use a more complex model\n- Add more relevant features\n- Reduce regularization strength\n- Train for longer"
+  },
+  {
+    "doc_id": "precision_recall::0",
+    "source": "precision_recall.md",
+    "chunk_id": 0,
+    "text": "# Precision, Recall, and F1 Score\n\nPrecision and recall are metrics used to evaluate classification\nmodels, especially when classes are imbalanced (accuracy alone can be\nmisleading in that case).\n\nPrecision answers: \"Of everything the model predicted as positive,\nhow much was actually positive?\"\nPrecision = True Positives / (True Positives + False Positives)"
+  },
+  {
+    "doc_id": "precision_recall::1",
+    "source": "precision_recall.md",
+    "chunk_id": 1,
+    "text": "ve,\nhow much was actually positive?\"\nPrecision = True Positives / (True Positives + False Positives)\nRecall answers: \"Of everything that was actually positive, how much\ndid the model correctly identify?\"\nRecall = True Positives / (True Positives + False Negatives)\n\nThere is usually a trade-off between precision and recall: raising the\ndecision threshold tends to increase precision but decrease recall,\nand lowering it does the opposite."
+  },
+  {
+    "doc_id": "precision_recall::2",
+    "source": "precision_recall.md",
+    "chunk_id": 2,
+    "text": "cision threshold tends to increase precision but decrease recall,\nand lowering it does the opposite.\nF1 score is the harmonic mean of precision and recall, useful when you\nwant a single number that balances both:\nF1 = 2 * (Precision * Recall) / (Precision + Recall)\n\nWhen to prioritize recall: situations where missing a positive case is\ncostly (e.g. disease screening, fraud detection).\n\nWhen to prioritize precision: situations where a false alarm is costly\nand positive predictions trigger significant action (e.g. spam filters\nthat delete email automatically)."
+  }
+]

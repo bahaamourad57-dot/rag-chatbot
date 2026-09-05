@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What is the difference between precision and recall?",
+    "expected_source": "precision_recall.md"
+  },
+  {
+    "question": "How do I reduce overfitting in my model?",
+    "expected_source": "overfitting.md"
+  },
+  {
+    "question": "How does k-fold cross-validation work?",
+    "expected_source": "cross_validation.md"
+  },
+  {
+    "question": "What's the difference between stratified and regular k-fold?",
+    "expected_source": "cross_validation.md"
+  },
+  {
+    "question": "My model does great on training data but badly on new data, what's happening?",
+    "expected_source": "overfitting.md"
+  },
+  {
+    "question": "When should I care more about recall than precision?",
+    "expected_source": "precision_recall.md"
+  }
+]
