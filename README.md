@@ -28,7 +28,7 @@ embedding model later would only mean changing `ingest.py` and
 Question → Retriever (TF-IDF cosine similarity, top-3 chunks)
          → if nothing scores above threshold: return "I don't know"
          → else: build a prompt with the retrieved chunks as context
-         → Llama 3.3 70B (via Groq's free API) generates an answer,
+         → GPT-OSS 120B (via Groq's free API) generates an answer,
            citing which doc it came from
 ```
 
@@ -97,4 +97,4 @@ rebuild the index. No other code changes needed.
 
 ## Stack
 
-Python, scikit-learn (TF-IDF, cosine similarity), Groq API (Llama 3.3 70B)
+Python, scikit-learn (TF-IDF, cosine similarity), Groq API (GPT-OSS 120B)
